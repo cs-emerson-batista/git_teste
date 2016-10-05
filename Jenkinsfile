@@ -6,7 +6,7 @@ stage 'Checkout'
 }
 stage 'Build'
  node('master') {
- sh 'virtualenv venv; source ˜/venv/bin/activate; pip install -r requirements.txt --upgrade'
+ sh 'virtualenv venv; . venv/bin/activate; pip install -r requirements.txt --upgrade'
   step([$class: 'ArtifactArchiver', artifacts: '/workspace/venv/'])
 }
 stage 'Run Tests'
