@@ -12,5 +12,6 @@ stage 'Build'
 stage 'Run Tests'
   node('master') {
    sh 'virtualenv venv; . venv/bin/activate; python manage.py test'
-	publishHTML(target: [reportDir: 'meu_testes/build/reports/', reportFiles: 'index.html', reportName: 'Testes Instrumentados'])
+	 publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'html/', reportFiles: 'index.html', reportName: 'HTML Report'])
+
 }
