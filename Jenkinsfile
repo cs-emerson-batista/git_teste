@@ -7,10 +7,10 @@ stage 'Checkout'
 stage 'Build'
  node('master') {
  sh 'virtualenv venv; . venv/bin/activate; pip install -r requirements.txt --upgrade'
-  step([$class: 'ArtifactArchiver', artifacts: 'venv/'])
+  step([$class: 'ArtifactArchiver', artifacts: 'build/'])
 }
 stage 'Run Tests'
   node('master') {
    sh 'virtualenv venv; . venv/bin/activate; python manage.py test'
-	 step([$class: 'ArtifactArchiver', artifacts: 'venv/'])
+	 publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'caminho/do/relatorio/', reportFiles: 'index.html', reportName: 'Meu Relatorio'])
 }
