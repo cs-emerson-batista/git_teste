@@ -6,7 +6,7 @@ stage 'Checkout'
 }
 stage 'Build'
  node('master') {
- sh 'export WORKSPACE=pwd; virtualenv venv; source $WORKSPACE/venv/bin/activate; pip install -r requirements.txt --upgrade'
+ sh 'virtualenv venv; source $WORKSPACE/venv/bin/activate; pip install -r requirements.txt --upgrade'
   step([$class: 'ArtifactArchiver', artifacts: '/workspace/venv/'])
 }
 stage 'Run Tests'
