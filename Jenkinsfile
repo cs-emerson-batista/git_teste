@@ -13,6 +13,6 @@ stage 'Run Tests'
   node('master') {
    sh 'virtualenv venv; . venv/bin/activate; python manage.py test'
 	 sh 'mkdir . html '
-	 publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'html/', reportFiles: 'index.html', reportName: 'HTML Report'])
-
+	 publishHTML(target: [reportDir: 'html/', reportFiles: 'index.html', reportName: 'Testes Instrumentados'])
+	 step([$class: 'JUnitResultArchiver', testResults: 'build/*.xml'])
 }
