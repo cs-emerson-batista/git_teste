@@ -11,5 +11,5 @@ stage 'Build'
 }
 stage 'Run Tests'
   node('master') {
-   sh 'virtualenv venv; . venv/bin/activate; python manage.py test >> resultado.txt'
+   sh 'virtualenv venv; . venv/bin/activate; python manage.py test'
 }
