@@ -16,6 +16,7 @@ stage 'Run Tests'
 
 	 try {
         sh 'virtualenv venv; . venv/bin/activate; python manage.py test'// do something that fails
+				input message: 'Algo com sucesso?'
         currentBuild.result = 'SUCCESS'
     } catch (Exception err) {
         currentBuild.result = 'FAILURE'
