@@ -7,6 +7,6 @@ stage 'Build'
 stage 'Run Tests'
 	 sh 'virtualenv venv; . venv/bin/activate; python manage.py test'// do something that fails
 stage 'Escrevendo'
-	causes = currentBuild.rawBuild.getCauses()
-	 writeFile encoding: 'UTF-8', file: 'venv/resultado.txt', text: '${causes}'
+				 writeFile encoding: 'UTF-8', file: 'venv/resultado.txt', text: '${currentBuild.result}'
+	
 }
