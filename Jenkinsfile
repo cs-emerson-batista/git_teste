@@ -13,6 +13,5 @@ stage 'Build'
 stage 'Run Tests'
 	node('master'){
    sh 'virtualenv venv; . venv/bin/activate; python manage.py test'
-	 sh 'mkdir html'
-	 step(echo 'Realizado com sucesso!!!')
+	 	 
 }
