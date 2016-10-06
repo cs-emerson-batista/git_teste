@@ -1,7 +1,8 @@
+node('master'){
 stage 'Checkout'
 	deleteDir()
 	checkout scm
-stage 'Build'
+	stage 'Build'
  	sh 'virtualenv venv; . venv/bin/activate; pip install -r requirements.txt --upgrade'
   step([$class: 'ArtifactArchiver', artifacts: 'build/'])
 stage 'Run Tests'
@@ -13,3 +14,4 @@ stage 'Run Tests'
 				echo err
     }
     echo "RESULT: ${currentBuild.result}"
+}
