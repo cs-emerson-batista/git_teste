@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export WORKSPACE=pwd
+export WORKSPACE=`pwd`
 
 #Create Virtual Env
 
@@ -8,4 +8,4 @@ virtualenv venv
 
 source venv/bin/activate
 
-pip install -r requirements.txt
+pip install -r requirements.txt --upgrade
