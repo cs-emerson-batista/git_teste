@@ -7,8 +7,8 @@ stage 'Build'
 stage 'Run Tests'
 	 sh 'virtualenv venv; . venv/bin/activate; python manage.py test'// do something that fails
 	 sh  'python manage.py runserver'
-	 step(httpRequest acceptType: 'APPLICATION_OCTETSTREAM', contentType: 'APPLICATION_OCTETSTREAM', url: 'http://127.0.0.0:8000/admin/login/?next=/admin/', validResponseCodes: '200:399')
+	 step(httpRequest url: 'http://127.0.0.0:8000/admin/login/?next=/admin/', validResponseCodes: '200')
 	 sh 'exit'
 stage 'Escrevendo'
-				 writeFile encoding: 'UTF-8', file: 'venv/resultado.txt', text: ${currentBuild.result}				 
+				 writeFile encoding: 'UTF-8', file: 'venv/resultado.txt', text: ${currentBuild.result}
 }
