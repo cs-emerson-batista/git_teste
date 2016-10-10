@@ -9,6 +9,6 @@ stage 'Build'
 stage 'Run Tests'
 		 sh 'virtualenv venv; . venv/bin/activate; python manage.py test >> resultado.txt'// do something that fails
 stage 'Escrevendo'
-		sh 'if [ -e resultado.txt  ]; then echo "SUCESSO" > build.txt; else echo "FALHOU"; fi'
+		sh 'if [ -e resultado.txt  ]; then cat resultado.txt > build.txt; else echo "FALHOU"; fi'
 		archiveArtifacts allowEmptyArchive: false, artifacts: 'build.txt', excludes: null, onlyIfSuccessful: true
 }
