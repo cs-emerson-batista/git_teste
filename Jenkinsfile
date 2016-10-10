@@ -9,5 +9,8 @@ stage 'Build'
 stage 'Run Tests'
 		 sh 'virtualenv venv; . venv/bin/activate; python manage.py test >> resultado.txt'// do something that fails
 stage 'Escrevendo'
-		 writeFile encoding: 'UTF-8', file: 'build.txt', text: '${currentBuild.result}'
+		sh 'if [[ -e resultado.txt  ]]; then
+		  echo 'SUCESSO' > build.txt
+		fi'
+		archiveArtifacts allowEmptyArchive: true, artifacts: 'build.txt', excludes: null, onlyIfSuccessful: true
 }
